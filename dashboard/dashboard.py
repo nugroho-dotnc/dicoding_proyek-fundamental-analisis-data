@@ -4,6 +4,9 @@ import matplotlib.ticker as ticker
 import seaborn as sns
 import numpy as np
 import streamlit as st
+import os
+
+dir_name = os.path.dirname(__file__)
 
 st.set_page_config(
     page_title="E-Commerce Dashboard",
@@ -21,7 +24,7 @@ WARNA_ABU = "#b0b7c3"
 @st.cache_data
 def load_q1():
     df = pd.read_csv(
-        "dataset_q1.csv",
+        os.path.join(dir_name, "dataset_q1.csv"),
         parse_dates=["order_purchase_timestamp"],
         usecols=[
             "order_id", "order_item_id", "price", "freight_value",
@@ -36,7 +39,7 @@ def load_q1():
 @st.cache_data
 def load_q2():
     df = pd.read_csv(
-        "dataset_q2.csv",
+        os.path.join(dir_name, "dataset_q2.csv"),
         parse_dates=[
             "order_purchase_timestamp",
             "order_delivered_customer_date",
