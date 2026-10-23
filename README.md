@@ -101,7 +101,7 @@ Buka URL tersebut di browser untuk melihat dashboard.
 
 ## Fitur Dashboard
 
-### Tab 1 — 📦 Penjualan & Kepuasan per Kategori
+### Tab 1 — Penjualan & Kepuasan per Kategori
 
 | Filter                 | Keterangan                                              |
 |-----------------------|--------------------------------------------------------|
@@ -113,7 +113,7 @@ Buka URL tersebut di browser untuk melihat dashboard.
 - Horizontal bar chart — nilai penjualan + jumlah barang + harga rata-rata
 - Scatter plot — rata-rata skor review per kategori vs rata-rata state
 
-### Tab 2 — 🚚 Keterlambatan & Review Score
+### Tab 2 — Keterlambatan & Review Score
 
 | Filter            | Keterangan                                                    |
 |-------------------|---------------------------------------------------------------|
