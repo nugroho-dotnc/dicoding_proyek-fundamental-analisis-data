@@ -63,7 +63,7 @@ dataset_q2 = load_q2()
 
 
 st.title("E-Commerce Public Dataset Dashboard")
-st.caption("Proyek Analisis Data — Nugroho Nur Cahyo · ds128b6y1401")
+st.caption("Proyek Analisis Data — Nugroho Nur Cahyo · nugroho-dotnc")
 st.markdown("---")
 
 
