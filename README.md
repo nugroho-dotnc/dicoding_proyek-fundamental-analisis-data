@@ -2,7 +2,7 @@
 
 **Nama:** Nugroho Nur Cahyo  
 **Email:** nugroho.nur.cahyo.career@gmail.com  
-**ID Dicoding:** ds128b6y1401
+**ID Dicoding:** nugroho-dotnc
 
 ## Deskripsi Proyek
 
