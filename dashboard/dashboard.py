@@ -197,11 +197,23 @@ with tab1:
         sort_col = sort_options[sort_label]
 
     # ── APPLY FILTERS ──
-    if isinstance(date_range_q1, tuple) and len(date_range_q1) == 2:
-        start_q1, end_q1 = pd.Timestamp(date_range_q1[0]), pd.Timestamp(date_range_q1[1]) + pd.Timedelta(days=1)
-    else:
-        start_q1 = pd.Timestamp(date_range_q1)
-        end_q1 = pd.Timestamp(date_range_q1) + pd.Timedelta(days=1)
+    try:
+        start_date_q1, end_date_q1 = date_range_q1
+    except (ValueError, IndexError):
+        st.warning("⚠️ Tanggal akhir (End Date) belum dipilih. Menampilkan data berdasarkan tanggal yang dipilih.")
+        if isinstance(date_range_q1, (tuple, list)) and len(date_range_q1) > 0:
+            start_date_q1 = date_range_q1[0]
+            end_date_q1 = date_range_q1[0]
+        else:
+            start_date_q1 = min_date_q1
+            end_date_q1 = max_date_q1
+    except Exception as e:
+        st.error(f"Terjadi kesalahan pada filter tanggal: {e}")
+        start_date_q1 = min_date_q1
+        end_date_q1 = max_date_q1
+
+    start_q1 = pd.Timestamp(start_date_q1)
+    end_q1 = pd.Timestamp(end_date_q1) + pd.Timedelta(days=1)
 
     mask_q1 = (
         (dataset_q1["order_status"] == "delivered")
@@ -271,9 +283,13 @@ with tab1:
         axes[1].set_title("B. Kepuasan Pelanggan per Kategori")
         axes[1].legend(loc="lower right", fontsize=8)
 
+        title_date_q1 = (
+            start_date_q1.strftime("%d %b %Y")
+            if start_date_q1 == end_date_q1
+            else f"{start_date_q1.strftime('%d %b %Y')} — {end_date_q1.strftime('%d %b %Y')}"
+        )
         fig.suptitle(
-            f"5 Kategori dengan {sort_label} Tertinggi di {selected_state_q1}, "
-            f"{date_range_q1[0].strftime('%d %b %Y')} — {date_range_q1[1].strftime('%d %b %Y')}",
+            f"5 Kategori dengan {sort_label} Tertinggi di {selected_state_q1}, {title_date_q1}",
             fontsize=13, fontweight="bold",
         )
         plt.tight_layout()
@@ -348,11 +364,23 @@ with tab2:
             )
 
     # ── APPLY FILTERS ──
-    if isinstance(date_range_q2, tuple) and len(date_range_q2) == 2:
-        start_q2, end_q2 = pd.Timestamp(date_range_q2[0]), pd.Timestamp(date_range_q2[1]) + pd.Timedelta(days=1)
-    else:
-        start_q2 = pd.Timestamp(date_range_q2)
-        end_q2 = pd.Timestamp(date_range_q2) + pd.Timedelta(days=1)
+    try:
+        start_date_q2, end_date_q2 = date_range_q2
+    except (ValueError, IndexError):
+        st.warning("Tanggal akhir (End Date) belum dipilih. Menampilkan data berdasarkan tanggal yang dipilih.")
+        if isinstance(date_range_q2, (tuple, list)) and len(date_range_q2) > 0:
+            start_date_q2 = date_range_q2[0]
+            end_date_q2 = date_range_q2[0]
+        else:
+            start_date_q2 = min_date_q2
+            end_date_q2 = max_date_q2
+    except Exception as e:
+        st.error(f"Terjadi kesalahan pada filter tanggal: {e}")
+        start_date_q2 = min_date_q2
+        end_date_q2 = max_date_q2
+
+    start_q2 = pd.Timestamp(start_date_q2)
+    end_q2 = pd.Timestamp(end_date_q2) + pd.Timedelta(days=1)
 
     tanggal_q2 = dataset_q2["order_delivered_customer_date"]
     mask_q2 = (
@@ -467,9 +495,13 @@ with tab2:
                           ha="center", va="center", fontsize=12, color="gray")
             axes2[2].set_title("C. Skor Review per Lama Keterlambatan")
 
+        title_date_q2 = (
+            start_date_q2.strftime("%d %b %Y")
+            if start_date_q2 == end_date_q2
+            else f"{start_date_q2.strftime('%d %b %Y')} — {end_date_q2.strftime('%d %b %Y')}"
+        )
         fig2.suptitle(
-            f"Keterlambatan Pengiriman & Review Score — Pesanan Delivered di {selected_state_q2}, "
-            f"{date_range_q2[0].strftime('%d %b %Y')} — {date_range_q2[1].strftime('%d %b %Y')}",
+            f"Keterlambatan Pengiriman & Review Score — Pesanan Delivered di {selected_state_q2}, {title_date_q2}",
             fontsize=13, fontweight="bold",
         )
         plt.tight_layout()
