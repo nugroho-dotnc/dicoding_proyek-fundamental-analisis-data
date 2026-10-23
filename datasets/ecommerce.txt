@@ -1,0 +1,72 @@
+customers:
+1. customer_id
+2. customer_unique_id
+3. customer_zip_code_prefix
+4. customer_city
+5. customer_state
+
+geolocation:
+1. geolocation_zip_code_prefix
+2. geolocation_lat
+3. geolocation_lng
+4. geolocation_city
+5. geolocation_state
+
+order_items:
+1. order_id
+2. order_item_id
+3. product_id
+4. seller_id
+5. shipping_limit_date
+6. price
+7. freight_value
+
+products:
+1. product_id
+2. product_category_name
+3. product_name_length
+4. product_photos_qty
+5. product_weight_cm
+6. product_length_cm
+7. product_height_cm
+8. product_width_cm
+
+product_category_name_translation:
+1. product_category_name
+2. product_category_name_english
+
+order_payments: 
+1. order_id
+2. payment_sequential
+3. payment_type
+4. payment_installments
+5. payment_value
+
+order_reviews:
+1. review_id
+2. order_id
+3. review_score
+4. review_comment_title
+5. review_comment_message
+6. review_creation_date
+7. review_answer_timestamp
+
+order_df:
+1. order_id
+2. customer_id
+3. order_status
+4. order_purchase_timestamp
+5. order_approved_at
+6. order_delivered_carrier_date
+7. order_delivered_customer_date
+8. order_estimated_delivery_date
+
+
+seller:
+1. seller_id
+2. seller_zip_code_prefix
+3. seller_city
+4. seller_state
+
+
+
