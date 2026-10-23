@@ -1,0 +1,2 @@
+link github: https://github.com/nugroho-dotnc/dicoding_proyek-fundamental-analisis-data
+link dashboard streamlit: https://nugroho-dotnc-dicoding-proyek-fundame-dashboarddashboard-pmgjnr.streamlit.app/
